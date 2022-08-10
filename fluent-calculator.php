@@ -8,17 +8,14 @@ class FluentCalculator{
     public $value_stack            = array();
     public $expression_format      = array();
     public $expression_stack       = array();
-    public static $single_instance = null;
     public $expression_string;
     public $number_string;
 
+    
     public static function init() {
-        if( self::$single_instance == null ) {
-            self::$single_instance = new FluentCalculator();
-        }
-        return self::$single_instance;
+        return new FluentCalculator();
     }
-
+    
     public function __get($name)
     {
         if( isset( $this->values[$name] ) && is_int( $this->values[$name] ) ) {
